@@ -1,9 +1,13 @@
 
 package GUI;
 
+
+import Model.EnemyShip;
+import Model.PlayerShip;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -13,20 +17,19 @@ public class Main extends JFrame
     public Main() 
     {
         initComponents();
-        setLookAndFeel();
+        setLookAndFeel();               
     }
     
     private void initComponents()
     {
-        this.setSize(400, 400);
+        this.setSize(400, 428);
         this.setTitle("Senven Sea");
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
         JPanel panel = new JPanel()
-        {
-            
+        {          
           Image image = Toolkit.getDefaultToolkit().createImage("Image\\Background.png");          
           @Override
           public void paintComponent(Graphics g)
@@ -39,7 +42,16 @@ public class Main extends JFrame
             }              
           }
         };
+        panel.setSize(400, 400);
         this.add(panel);
+        
+        PlayerShip player = new PlayerShip(new ImageIcon("Image/Player_1.png"), 80, 160);
+        EnemyShip en_1 = new EnemyShip(new ImageIcon("Image//Enemy.png"), 240, 0);
+        EnemyShip en_2 = new EnemyShip(new ImageIcon("Image//Enemy.png"), 240, 0);
+        this.add(player);
+        this.add(en_2);
+        this.add(en_1);
+        panel.setLayout(null);
         
     }
     public static void main(String[] args) 
